@@ -1,0 +1,396 @@
+﻿@page "/ejercicio1"
+
+@using System.ComponentModel.DataAnnotations
+@using Telerik.DataSource
+@using System.ComponentModel
+
+<h1>Empleados</h1>
+
+<TelerikButton OnClick="@OnClickHandler" Icon="plus">Agregar</TelerikButton>
+
+<TelerikGrid Data=@GridData
+             Height="450px"
+             Width="100%"
+             Pageable="true"
+             PageSize="10"
+             Resizable="true"
+             Reorderable="true"
+             FilterMode="Telerik.Blazor.GridFilterMode.FilterMenu"
+             Groupable="true"
+             SelectionMode="@GridSelectionMode.Multiple"
+             Sortable="true"
+             OnCreate="@CreateHandler"
+             OnDelete="@DeleteHandler"
+             ConfirmDelete="true"
+             OnUpdate="@UpdateHandler"
+             OnRowDoubleClick="@OnRowDoubleClickHandler"
+             OnStateInit="@((GridStateEventArgs<Employee> args) => OnStateInit(args))">
+    <GridExport>
+        <GridExcelExport FileName="telerik-grid-export" AllPages="true" />
+    </GridExport>
+    <GridColumns>
+        <GridColumn Field=@nameof(Employee.Nombre) Width="220px" />
+        <GridColumn Field=@nameof(Employee.Equipo) Width="150px"></GridColumn>
+        <GridColumn Field=@nameof(Employee.Senior) Title="Es senior" Width="100px" TextAlign="@ColumnTextAlign.Center">
+            <Template>
+                @{
+                    bool isInStock = (context as Employee).Senior;
+
+                    if (isInStock)
+                    {
+                        <span class="k-badge k-badge-md k-badge-solid k-badge-success k-badge-rounded">Sí</span>
+                    }
+                    else
+                    {
+                        <span class="k-badge k-badge-md k-badge-solid k-badge-error k-badge-rounded">No</span>
+                    }
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
+</TelerikGrid>
+
+
+@if (showDialog)
+{
+    <!-- Modal -->
+    <div class="modal fade show d-block" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">@DialogTitle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="@employee" OnValidSubmit="@HandleValidSubmit">
+                        <input type="hidden" @bind-value="@employee.Id" />
+
+                        <div class="form-group row">
+                            <label for="Name" class="col-sm-3 col-form-label">Nombre:</label>
+                            <div class="col-sm-9">
+                                <TelerikTextBox Title=""
+                                                @bind-Value="@employee.Nombre"
+                                                Name="Name">
+                                </TelerikTextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Name" class="col-sm-3 col-form-label">Equipo:</label>
+                            <div class="col-sm-9">
+                                <TelerikDropDownList Data="@MyStringList" @bind-Value="@employee.Equipo" DefaultText="Selección de equipo">
+                                </TelerikDropDownList>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Name" class="col-sm-3 col-form-label">Es Senior:</label>
+                            <div class="col-sm-9">
+                                <TelerikSwitch @bind-Value="@employee.Senior" @ref="@TheSwitchRef" />
+                            </div>
+                        </div>
+
+                    </EditForm>
+                </div>
+                <div class="modal-footer">
+                    @if (employee.Id > 0)
+                    {
+
+                        <button type="button" class="btn btn-danger mr-auto" @onclick="ShowDialogConfirm">Eliminar</button>
+                    }
+                    <button type="button" class="btn btn-primary" @onclick="HandleValidSubmit">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="Close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (showDialogConfirm)
+{
+    <div class="modal fade show d-block" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        @if (employee.Nombre.Length > 0)
+                        {<span>@employee.Nombre</span> }
+                    else
+                    { <span>New employee</span>}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="CloseModalDelete">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Desea eliminar el registro?</p>
+                <h3>@employee.Nombre</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger mr-auto" @onclick="Eliminar">Sí</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="CloseModalDelete">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@code {
+
+    public List<Employee> GridData { get; set; }
+    public List<Employee> SourceData { get; set; }
+    public List<Employee> Categories { get; set; }
+    public Employee employee = new Employee();
+    private bool Visible { get; set; } = false;
+    TelerikSwitch<bool> TheSwitchRef { get; set; }
+    protected List<string> MyList = new List<string>() { "Microsoft", "Google", "Viaro" };
+    public Boolean showDialog = false;
+    public Boolean showDialogConfirm = false;
+    public List<SampleData> lista = new();
+    protected string MyStringItem { get; set; }
+    public string? DialogTitle;
+
+    public string result;
+    string MySelectedItem { get; set; } = "second";
+    protected List<string> MyList2 = new List<string>() { "Microsoft", "Google", "Viaro" };
+
+    List<SampleData> days = new List<SampleData>();
+
+    int lastId = 0;
+
+    protected override Task OnInitializedAsync()
+    {
+        InitSourceData();
+
+        LoadData();
+
+        return base.OnInitializedAsync();
+    }
+
+    private void CreateHandler(GridCommandEventArgs args)
+    {
+        CreateItem((Employee)args.Item);
+
+        LoadData();
+    }
+
+    private void CreateItem(Employee item)
+    {
+        Employee e = item;
+
+        e.Id = ++lastId;
+        SourceData.Insert(0, e);
+        LoadData();
+    }
+
+    private void DeleteHandler(GridCommandEventArgs args)
+    {
+        DeleteItem((Employee)args.Item);
+
+        LoadData();
+    }
+
+    private void EditHandler(GridCommandEventArgs args)
+    {
+        Employee e = (Employee)args.Item;
+        employee = new Employee() { Id = e.Id, Nombre = e.Nombre, TeamName = e.TeamName, Senior = e.Senior };
+        //Visible = true;
+    }
+
+    private void DeleteItem(Employee item)
+    {
+        SourceData.Remove(item);
+    }
+
+    private void UpdateHandler(GridCommandEventArgs args)
+    {
+        UpdateItem((Employee)args.Item);
+
+        LoadData();
+    }
+
+    private void UpdateItem(Employee item)
+    {
+        var existing = SourceData.FirstOrDefault(p => p.Id == item.Id);
+
+        if (existing != null)
+        {
+            existing.Nombre = item.Nombre;
+            existing.TeamName = item.TeamName;
+            existing.Senior = item.Senior;
+            existing.Equipo = item.Equipo;
+        }
+
+        LoadData();
+    }
+
+    private void OnStateInit(GridStateEventArgs<Employee> args)
+    {
+        //args.GridState.GroupDescriptors = new List<GroupDescriptor>()
+        //{
+        //    new GroupDescriptor()
+        //    {
+        //        Member = nameof(Employee.TeamName)
+        //    }
+        //};
+    }
+
+    public class Employee
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        //public int TeamId { get; set; }
+        public TeamName TeamName { get; set; }
+        public String Equipo { get; set; }
+        public Boolean Senior { get; set; }
+
+        public Employee()
+        {
+            //Available = true;
+        }
+    }
+
+    public enum TeamName
+    {
+        [Description("Microsoft")]
+        Microsoft = 1,
+        [Description("Google")]
+        Google = 2,
+        [Description("Viaro")]
+        Viaro = 3,
+    }
+
+    public void LoadData()
+    {
+        GridData = new List<Employee>(SourceData);
+    }
+
+    public void InitSourceData()
+    {
+        List<Employee> data = new List<Employee>();
+
+        data.Add(new Employee() { Id = 1, Nombre = "Chun-Li", TeamName = TeamName.Microsoft, Senior = true, Equipo = "Microsoft" });
+        data.Add(new Employee() { Id = 2, Nombre = "Lio Messi", TeamName = TeamName.Google, Senior = false, Equipo = "Google" });
+        data.Add(new Employee() { Id = 2, Nombre = "Steve Jobs", TeamName = TeamName.Viaro, Senior = false, Equipo = "Viaro" });
+
+        SourceData = data;
+
+        foreach (var value in Enum.GetValues(typeof(TeamName)))
+        {
+
+            days.Add(new SampleData() { Value = (int)value, Description = ((TeamName)value).ToString() });
+        }
+
+
+        //days = ((TeamName[])Enum.GetValues(typeof(TeamName))).Select(c => new SampleData() { Value = (int)c, Description = c.ToString() }).ToList();
+    }
+
+    async Task OnClickHandler()
+    {
+        //Visible = !Visible;
+        showDialog = true;
+        ClearFields();
+    }
+
+    async Task HandleValidSubmit()
+    {
+        if (employee.Id > 0)
+        {
+            UpdateItem(employee);
+        }
+        else
+        {
+            Employee e = new Employee() { Id = 1, Nombre = employee.Nombre, TeamName = employee.TeamName, Senior = employee.Senior, Equipo = employee.Equipo };
+            CreateItem(new Employee() { Id = 1, Nombre = employee.Nombre, TeamName = employee.TeamName, Senior = employee.Senior, Equipo = employee.Equipo });
+        }
+        //data.Add(new Employee() { Id = 1, Nombre = employee.Nombre, TeamId = employee.TeamId, TeamNombre = employee.TeamName });
+
+        ClearFields();
+        Visible = false;
+        showDialog = false;
+    }
+
+    public void ClearFields()
+    {
+        employee.Id = 0;
+        employee.Nombre = "";
+        employee.Equipo = "";
+        employee.Senior = false;
+        DialogTitle = "Agregar nuevo empleado";
+    }
+
+    public void Close()
+    {
+        showDialog = false;
+    }
+
+    void OnRowDoubleClickHandler(GridRowClickEventArgs args)
+    {
+        Employee e = (Employee)args.Item;
+        employee = new Employee() { Id = e.Id, Nombre = e.Nombre, TeamName = e.TeamName, Senior = e.Senior, Equipo = e.Equipo };
+        DialogTitle = "Editar empleado: " + e.Nombre;
+        showDialog = true;
+    }
+
+    private void Eliminar()
+    {
+        Employee e = new Employee() { Id = employee.Id, Nombre = employee.Nombre, TeamName = employee.TeamName, Senior = employee.Senior };
+
+        var existing = SourceData.FirstOrDefault(p => p.Id == e.Id);
+
+        if (existing != null)
+        {
+            DeleteItem(existing);
+            //SourceData.Remove(/*)*/
+            ClearFields();
+        }
+
+        LoadData();
+        showDialog = false;
+        showDialogConfirm = false;
+    }
+
+    void ShowDialogConfirm()
+    {
+        showDialogConfirm = true;
+    }
+
+    void CloseModalDelete()
+    {
+        showDialogConfirm = false;
+    }
+
+    public class SampleData
+    {
+        public int Value { get; set; }
+        public string Description { get; set; }
+    }
+
+    void MyOnChangeHandler(object theUserInput)
+    {
+        // the handler receives an object that you may need to cast to the type of the component
+        // if you do not provide a Value, you must provide the Type parameter to the component
+        result = string.Format("The user selected: {0}", (theUserInput as string));
+    }
+
+
+    public class MyDdlModel
+    {
+        public int MyValueField { get; set; }
+        public string MyTextField { get; set; }
+    }
+
+    int selectedValue { get; set; }
+
+    //Define a preselected value when the component initializes
+    protected override void OnInitialized()
+    {
+        selectedValue = 3;
+    }
+
+    IEnumerable<MyDdlModel> myDdlData = Enumerable.Range(1, 20).Select(x => new MyDdlModel { MyTextField = "item " + x, MyValueField = x });
+
+    protected List<string> MyStringList = new List<string>() { "Microsoft", "Google", "Viaro" };
+}
