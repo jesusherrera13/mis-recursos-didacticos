@@ -1,0 +1,15 @@
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/bin/Debug/net6.0/MySuperBank
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/bin/Debug/net6.0/MySuperBank.deps.json
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/bin/Debug/net6.0/MySuperBank.runtimeconfig.json
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/bin/Debug/net6.0/MySuperBank.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/bin/Debug/net6.0/MySuperBank.pdb
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.csproj.AssemblyReference.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.GeneratedMSBuildEditorConfig.editorconfig
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.AssemblyInfoInputs.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.AssemblyInfo.cs
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.csproj.CoreCompileInputs.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/refint/MySuperBank.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.pdb
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/MySuperBank.genruntimeconfig.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/MySuperBank/obj/Debug/net6.0/ref/MySuperBank.dll

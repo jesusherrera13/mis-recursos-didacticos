@@ -1,0 +1,15 @@
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/bin/Debug/net6.0/Lists
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/bin/Debug/net6.0/Lists.deps.json
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/bin/Debug/net6.0/Lists.runtimeconfig.json
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/bin/Debug/net6.0/Lists.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/bin/Debug/net6.0/Lists.pdb
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.csproj.AssemblyReference.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.GeneratedMSBuildEditorConfig.editorconfig
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.AssemblyInfoInputs.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.AssemblyInfo.cs
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.csproj.CoreCompileInputs.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/refint/Lists.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.pdb
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/Lists.genruntimeconfig.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Lists/obj/Debug/net6.0/ref/Lists.dll

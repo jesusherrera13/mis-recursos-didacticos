@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "8gdQMVwbwd9orbH9VzexItRlsnPNcDtt+OL1SswQ3im0qABnJNSgmsxBb5eChpcOWmTMGo0DzHgaD4Y1tilxLQ==",
+  "success": false,
+  "projectFilePath": "/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/blazor_telerik/Telerik/Telerik.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1102",
+      "level": "Error",
+      "message": "No se encuentra el paquete Telerik.UI.for.Blazor.Trial con la versión (>= 3.0.1)\n  - Versiones encontradas en nuget.org: 1 [ versión más cercana: 2.12.0 ]",
+      "libraryId": "Telerik.UI.for.Blazor.Trial",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
+}
