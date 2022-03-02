@@ -1,4 +1,6 @@
-﻿namespace MySuperBank
+﻿using System.Text;
+
+namespace MySuperBank
 {
     class BankAccount
     {
@@ -49,11 +51,25 @@
 
             if(Balance - amount < 0) 
             {
-                throw new ArgumentOutOfRangeException(nameof(amount), "Amount of withdrawal must be positive");
+                throw new ArgumentOutOfRangeException(nameof(amount), "Not sufficient funds for this withdrawal");
             }
 
             var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
+        }
+
+        public string GetAccountHistory()
+        {
+            var report = new StringBuilder();
+
+            report.AppendLine("Date\t\tAmmount\t\tNote");
+
+            foreach(var item in allTransactions)
+            {
+                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.Amount}\t\t{item.Notes}");
+            }
+
+            return report.ToString();
         }
     }
 }
