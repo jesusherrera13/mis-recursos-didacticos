@@ -1,0 +1,15 @@
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/bin/Debug/net6.0/PildorasInformaticas
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/bin/Debug/net6.0/PildorasInformaticas.deps.json
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/bin/Debug/net6.0/PildorasInformaticas.runtimeconfig.json
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/bin/Debug/net6.0/PildorasInformaticas.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/bin/Debug/net6.0/PildorasInformaticas.pdb
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.csproj.AssemblyReference.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.GeneratedMSBuildEditorConfig.editorconfig
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.AssemblyInfoInputs.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.AssemblyInfo.cs
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.csproj.CoreCompileInputs.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/refint/PildorasInformaticas.dll
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.pdb
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/PildorasInformaticas.genruntimeconfig.cache
+/home/jesus/Proyectos/mis-recursos-didacticos/PildorasInformaticas/obj/Debug/net6.0/ref/PildorasInformaticas.dll
