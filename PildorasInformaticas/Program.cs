@@ -22,6 +22,8 @@
             {
                 Console.WriteLine("Mensaje de la excepción: " + ex.Message);
             }
+
+            Video26 video26 = new Video26();
         }
     }
 }
