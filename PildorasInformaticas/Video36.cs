@@ -3,7 +3,7 @@ namespace PildorasInformaticas
     class Video36 
     {
         public const string URL = "https://www.youtube.com/watch?v=I1ADyLMTAwo";
-        public const string VIDEO_TITULO = "Curso C#. Arrays I. Vídeo 36";
+        public const string TITULO = "Curso C#. Arrays I. Vídeo 36";
 
         public Video36()
         {
