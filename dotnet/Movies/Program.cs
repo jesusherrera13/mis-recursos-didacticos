@@ -1,10 +1,76 @@
-﻿namespace Movies
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Movies
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Peliculas peliculas = new();
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+
+                builder.DataSource = "localhost";
+                builder.UserID = "sa";
+                builder.Password = "A1b2C3d4E5";
+                builder.InitialCatalog = "master";
+
+                Console.WriteLine("Connecting to Linux SQL Server");
+
+                using(SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    String db = "Movies";
+                    Console.WriteLine($"Setting up database `{db}`..."); 
+
+                    String sql = "SELECT name FROM master.sys.databases WHERE name = '" + db + "'";
+                    using(SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.ExecuteNonQuery();
+
+                        object resultObj = command.ExecuteScalar();
+
+                        if (resultObj == null)
+                        {
+                            Console.WriteLine($"Database '{db}' does not exists...");
+
+                            sql = "CREATE DATABASE [" + db + "]";
+
+                            using(SqlCommand command1 =  new SqlCommand(sql, connection)) 
+                            {
+                                command1.ExecuteNonQuery();
+                                Console.WriteLine($"\t'{db}' created...");
+
+                            }
+
+                            String table = "Peliculas";
+
+                            sql = @"CREATE TABLE " + db + ".dbo.Peliculas (
+                                id int NOT NULL IDENTITY PRIMARY KEY, titulo VARCHAR(100) NOT NULL);";
+                            
+                            Console.WriteLine(sql);
+                            using(SqlCommand command1 =  new SqlCommand(sql, connection)) 
+                            {
+                                command1.ExecuteNonQuery();
+                                Console.WriteLine($"\t'{table}' created...");
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            /* Peliculas peliculas = new();
 
             int op = 0;
 
@@ -48,7 +114,7 @@
 
             } while(op != 9);
 
-            Console.WriteLine("Hasta la vista... baby");
+            Console.WriteLine("Hasta la vista... baby"); */
 
             /* peliculas.impresion();
 

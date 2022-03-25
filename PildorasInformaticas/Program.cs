@@ -23,7 +23,15 @@
                 Console.WriteLine("Mensaje de la excepción: " + ex.Message);
             }
 
-            Video26 video26 = new Video26();
+            // Video34 video34_1 = new Video34();
+            // Video34 video34_2 = new Video34(3, 6);
+            // Console.WriteLine(Video34.ContadorDeObjetos());
+
+            // Video35 video35 = new Video35();
+
+            // Console.WriteLine(Video35.URL); 
+            // Video36 video36 = new Video36();
+            Video37.GetArray();
         }
     }
 }

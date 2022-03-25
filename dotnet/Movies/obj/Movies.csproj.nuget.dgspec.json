@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/jesus/Proyectos/dotnet/Movies/Movies.csproj": {}
+    "/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Movies/Movies.csproj": {}
   },
   "projects": {
-    "/home/jesus/Proyectos/dotnet/Movies/Movies.csproj": {
+    "/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Movies/Movies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jesus/Proyectos/dotnet/Movies/Movies.csproj",
+        "projectUniqueName": "/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Movies/Movies.csproj",
         "projectName": "Movies",
-        "projectPath": "/home/jesus/Proyectos/dotnet/Movies/Movies.csproj",
+        "projectPath": "/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Movies/Movies.csproj",
         "packagesPath": "/home/jesus/.nuget/packages/",
-        "outputPath": "/home/jesus/Proyectos/dotnet/Movies/obj/",
+        "outputPath": "/home/jesus/Proyectos/mis-recursos-didacticos/dotnet/Movies/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/jesus/.nuget/NuGet/NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -52,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }
