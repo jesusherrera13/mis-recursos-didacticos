@@ -4,6 +4,8 @@
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(args.Length);
+
             // int numero = int.MaxValue;
             // int resultado = unchecked(numero + 20);
 

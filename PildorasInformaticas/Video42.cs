@@ -1,10 +1,5 @@
 namespace PildorasInformaticas
 {
-    class Video42
-    {
-
-    }
-
     class Vehiculo
     {
         public int no_ruedas { get; set; }
