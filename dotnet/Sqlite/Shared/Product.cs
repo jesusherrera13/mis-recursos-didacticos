@@ -10,8 +10,8 @@ namespace Sqlite.Shared
         [StringLength(40)]
         public string ProductName { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? UnitPrice { get; set; }
+        [Column("UnitPrice", TypeName = "money")]
+        public decimal? Cost { get; set; }
 
         [Column("UnitsInStock")]
         public short? Stock { get; set; }
