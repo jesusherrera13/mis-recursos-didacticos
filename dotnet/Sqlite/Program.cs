@@ -14,7 +14,9 @@ namespace Sqlite
         static void Main(string[] args)
         {
             QueryingCategories();
-            QueryingProducts();
+            // QueryingProducts("");
+            // QueryingProducts("price");
+            QueryingProducts("like");
         }
 
         static void QueryingCategories()
@@ -34,27 +36,46 @@ namespace Sqlite
                 }
             }
         }
-        static void QueryingProducts()
+        static void QueryingProducts(string option)
         {
             using(var db = new Northwind())
             {
                 var loggerFactory = db.GetService<ILoggerFactory>();
                 loggerFactory.AddProvider(new ConsoleLoggerProvider());
+
                 WriteLine("Products that cost more than a price, highest at top.");
 
-                string input;
-                decimal price;
-                
-                do
-                {
-                    Write("Enter a product price: ");
-                    input = ReadLine();
-                } while(!decimal.TryParse(input, out price));
+                IQueryable<Product> prods = null;
 
-                IQueryable<Product> prods = db.Products
-                    .Where(product => product.Cost > price)
-                    .OrderByDescending(product => (double?) product.Cost);
-                
+                if(option.Equals("price")) {
+
+                    string input;
+                    decimal price;
+                    
+                    do
+                    {
+                        Write("Enter a product price: ");
+                        input = ReadLine();
+                    } while(!decimal.TryParse(input, out price));
+
+                    prods = db.Products
+                        .Where(product => product.Cost > price)
+                        .OrderByDescending(product => (double?) product.Cost);
+                }
+                else if(option.Equals("like"))
+                {
+                    Write("Enter part of a product name: ");
+                    string input = ReadLine();
+
+                    prods = db.Products
+                        .Where(p => EF.Functions.Like(p.ProductName, $"%{input}%"))
+                        .OrderByDescending(product => (double?) product.Cost);
+                }
+                else 
+                {
+                    prods = db.Products.OrderBy(product => product.ProductName);
+                }
+
                 foreach(Product item in prods)
                 {
                     Console.WriteLine("{0}: {1} costs {2:$#,##0.00} and has {3} in stock.", item.ProductID, item.ProductName, item.Cost, item.Stock);

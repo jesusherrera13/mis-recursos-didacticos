@@ -43,7 +43,8 @@ namespace Sqlite.Shared
         {
             if (eventId.Id == 20100)
             {
-                Write($"Level: {logLevel}, Event ID: {eventId.Id}");
+                // Write($"Level: {logLevel}, Event ID: {eventId.Id}");
+                Write("Level: {0}, Event ID: {1}, Event: {2}", logLevel, eventId.Id, eventId.Name);
                 
                 if (state != null)
                 {

@@ -19,6 +19,9 @@ namespace Sqlite.Shared
                 .Property(category => category.CategoryName)
                 .IsRequired()
                 .HasMaxLength(15);
+            
+            modelBuilder.Entity<Product>()
+                .HasQueryFilter(p => !p.Discontinued);
         }
     }
 }
