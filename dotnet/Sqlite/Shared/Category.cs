@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
-
+// Otro comentario del Erick
 namespace Sqlite.Shared
 {
     public class Category 

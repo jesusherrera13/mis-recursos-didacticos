@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+// Comentario del Erick
 namespace Sqlite.Shared
 {
     public class Northwind : DbContext
