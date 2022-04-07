@@ -58,14 +58,14 @@
             //     Console.WriteLine("\t" + video39.lenguajes[i].nombre);
             // }
 
-            Auto auto = new Auto();
-            auto.marca = "Tesla";
-            auto.no_puertas = 4;
+            // Auto auto = new Auto();
+            // auto.marca = "Tesla";
+            // auto.no_puertas = 4;
 
-            Bicicleta bicicleta = new Bicicleta();
-            bicicleta.marca = "Shimano";
-            bicicleta.pedales_acero = true;
-
+            // Bicicleta bicicleta = new Bicicleta();
+            // bicicleta.marca = "Shimano";
+            // bicicleta.pedales_acero = true;
+            Video52 video52 = new Video52();
         }
     }
 }
