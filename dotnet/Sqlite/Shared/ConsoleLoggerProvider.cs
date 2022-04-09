@@ -41,7 +41,7 @@ namespace Sqlite.Shared
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
-            if (eventId.Id == 20100)
+            /* if (eventId.Id == 20100)
             {
                 // Write($"Level: {logLevel}, Event ID: {eventId.Id}");
                 Write("Level: {0}, Event ID: {1}, Event: {2}", logLevel, eventId.Id, eventId.Name);
@@ -56,7 +56,7 @@ namespace Sqlite.Shared
                 }
 
                 WriteLine();
-            }
+            } */
         }
     }
 }
