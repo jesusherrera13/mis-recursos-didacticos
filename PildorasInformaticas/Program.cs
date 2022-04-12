@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(args.Length);
+            // Console.WriteLine(args.Length);
 
             // int numero = int.MaxValue;
             // int resultado = unchecked(numero + 20);
@@ -58,14 +58,15 @@
             //     Console.WriteLine("\t" + video39.lenguajes[i].nombre);
             // }
 
-            Auto auto = new Auto();
-            auto.marca = "Tesla";
-            auto.no_puertas = 4;
+            // Auto auto = new Auto();
+            // auto.marca = "Tesla";
+            // auto.no_puertas = 4;
 
-            Bicicleta bicicleta = new Bicicleta();
-            bicicleta.marca = "Shimano";
-            bicicleta.pedales_acero = true;
-
+            // Bicicleta bicicleta = new Bicicleta();
+            // bicicleta.marca = "Shimano";
+            // bicicleta.pedales_acero = true;
+            // Video58 video58 = new Video58();
+            Video59 video59 = new Video59();
         }
     }
 }
