@@ -4,8 +4,8 @@ namespace PildorasInformaticas
 {
     class Video63
     {
-        public static string URL = "";
-        public static string TITUlO = "";
+        public static string URL = "https://www.youtube.com/watch?v=_f255TeqteQ";
+        public static string TITUlO = "Curso C#. Colecciones I. Vídeo 63";
         List<int> numeros = new List<int>();
         public Video63()
         {
@@ -28,7 +28,6 @@ namespace PildorasInformaticas
         public void Agregar(int n)
         {
             numeros.Add(n);
-
         }
 
         public void Imprimir()
