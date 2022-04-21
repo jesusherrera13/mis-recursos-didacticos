@@ -13,7 +13,7 @@ namespace PildorasInformaticas
 
     class LectorDeArchivos
     {
-        StreamReader archivo = null;
+        StreamReader? archivo = null;
 
         int contador = 0;
         string linea;
